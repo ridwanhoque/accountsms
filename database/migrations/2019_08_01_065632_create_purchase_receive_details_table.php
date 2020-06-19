@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePurchaseReceiveDetailsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('purchase_receive_details', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->unsignedBigInteger('purchase_receive_id');
+            $table->foreign('purchase_receive_id')->references('id')->on('purchase_receives');
+            $table->unsignedBigInteger('raw_material_id');
+            $table->foreign('raw_material_id')->references('id')->on('raw_materials');
+            $table->decimal('quantity', 20, 2)->default('0');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('purchase_receive_details');
+    }
+}
