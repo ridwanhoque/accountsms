@@ -40,7 +40,7 @@ class AssetController extends Controller
     public function create()
     {
         $parties = Party::parties()->where('party_type', 2);
-        $chart_of_accounts = ChartOfAccount::where('type', 'asset')->charts();
+        $chart_of_accounts = ChartOfAccount::where('chart_type_id', 3)->charts();
         $payment_methods = PaymentMethod::methods()->get();
         $accounts = AccountInformation::accountInfo();
         return view('admin.accounting.assets.create', compact('parties', 'chart_of_accounts', 'payment_methods', 'accounts'));

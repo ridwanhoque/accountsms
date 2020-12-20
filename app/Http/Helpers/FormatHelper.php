@@ -2,6 +2,7 @@
 namespace App\Http\Helpers;
 
 use Illuminate\Support\Facades\Route;
+use NumberFormatter;
 
 class FormatHelper{
 
@@ -33,4 +34,9 @@ class FormatHelper{
         return in_array($url, $accounting_settings_urls) ? 'is-expanded':'';
     }
 
+    public static function toWords($amount){
+        $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
+
+        return ucfirst($formatter->format($amount));
+    }
 }

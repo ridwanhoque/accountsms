@@ -44,4 +44,7 @@ class AssetDetails extends Model
         return $this->morphMany('App\Transection', 'transactionable');
     }
 
+    public function chart_of_account(){
+        return $this->belongsTo('App\ChartOfAccount');
+    }
 }

@@ -41,7 +41,7 @@
                         <tbody>
                           @foreach($asset->asset_details as $details)
                           <tr>
-                            <td>{{ $details->chart_of_account->head_name }}</td>
+                            <td>{{ $details->chart_of_account->head_name ?? '' }}</td>
                             <td>{{ $details->amount }}</td>
                             <td>{{ $details->years.' '.config('app.yrs') }}</td>
                           </tr>

@@ -86,7 +86,7 @@
                         <th class="text-center" width="8%"> Years </th>
                         <th class="text-center">Account Information</th>
                         <th class="text-center"> Payment Method</th>
-                        <th class="text-center">Cheque</th>
+                        <th class="text-center">Note</th>
                       </tr>
                     </thead>
                     <tbody>

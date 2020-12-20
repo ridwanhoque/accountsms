@@ -9,7 +9,7 @@
                 <li><a class="app-menu__item {{ Request::is('home') ? 'active':'' }}" href="{{ url('/home') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
 
 
-                <li class="treeview {{ Formatter::checkAccountingUrl(Request::segment(1)) }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Account and Finance</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <li class="treeview {{ Request::is('reports/accounts_dashboard') ? 'is-expanded':Formatter::checkAccountingUrl(Request::segment(1)) }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Account and Finance</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                         <ul class="treeview-menu">
                                 <li><a class="treeview-item {{ Request::is('report/accounts_dashboard') ? 'active':'' }}" href="{{ url('reports/accounts_dashboard')}}"><i class="icon fa fa-book"></i>
                                                 Accounts Dashboard </a>

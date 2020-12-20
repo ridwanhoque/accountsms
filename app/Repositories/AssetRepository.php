@@ -16,10 +16,9 @@ class AssetRepository implements CrudInterface{
     public function create(){}
 
     public function store($request){
-        
         $asset = $this->save_assets($request);
 
-        foreach($request->asset_chart_id as $key => $assetchart_id){
+        foreach($request->chart_of_account_id as $key => $assetchart_id){
             $asset_details = $this->save_asset_details($request, $key, $asset->id);
        
             $this->save_transactions($request, $key, $asset_details->id);
@@ -43,7 +42,7 @@ class AssetRepository implements CrudInterface{
     public function save_asset_details($request, $key, $asset_id){
         $data = [
             'asset_id' => $asset_id,
-            'asset_chart_id' => $request->asset_chart_id[$key],
+            'chart_of_account_id' => $request->chart_of_account_id[$key],
             'account_information_id' => $request->account_information_id[$key],
             'payment_method_id' => $request->payment_method_id[$key],
             'years' => $request->years[$key],

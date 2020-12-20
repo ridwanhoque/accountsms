@@ -34,6 +34,7 @@ class PaymentVoucherRepository implements CrudInterface
         $data['bank_cash_charts'] = ChartOfAccount::noChild()
 			->where('company_id', companyId())
             ->whereIn('owner_type_id', config('app.cash_bank_ids'))
+            ->where('balance', '>', 0)
             ->pluck('head_name', 'id');
 
         return $data;
