@@ -38,7 +38,7 @@ class PurchaseRepository implements CrudInterface
 
     public function save_chart_of_account($request, $key){
         $chart_of_account = ChartOfAccount::find($request->chart_of_account_ids[$key]);
-        $key == 1 ? $chart_of_account->decrement('balance', $request->total_payable):$chart_of_account->increment('balance', $request->total_payable);
+        $key == 1 ? $chart_of_account->increment('balance', $request->total_payable):$chart_of_account->decrement('balance', $request->total_payable);
 
         return true;
     }

@@ -34,6 +34,7 @@
                                 <th>Head Name</th>
                                 <th>Parent Head</th>
                                 <th>Tire</th>
+                                <th>Balance</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                 <td>{{ $chartOfAccount->head_name }}</td>
                                 <td>{{ $chartOfAccount->parent ? $chartOfAccount->parent->head_name:'' }}</td>
                                 <td>{{ $chartOfAccount->tire }}</td>
+                                <td>{{ $chartOfAccount->balance }}</td>
                                 <td>
                                   <a class="btn btn-info btn-sm" title="Edit" href="{{ route('chart_of_accounts.edit',$chartOfAccount->id) }}"> <i class="fa fa-edit"></i> </a>
                                   <a class="btn btn-primary btn-sm" title="View" href="{{ route('chart_of_accounts.show',$chartOfAccount->id) }}"> <i class="fa fa-eye"></i> </a>

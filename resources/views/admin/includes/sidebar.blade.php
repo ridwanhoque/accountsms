@@ -67,7 +67,7 @@
                                                 Payment Method List </a></li>
                                 <li><a class="treeview-item {{ Request::is('party') ? 'active':'' }}" href="{{ url('party')}}"><i class="icon fa fa-circle-o"></i> Supplier List </a>
                                 </li>
-                                <li><a class="treeview-item {{ Request::is('vendor') ? 'active':'' }}" href="{{ url('vendor')}}"><i class="icon fa fa-circle-o"></i> Buyer List </a>
+                                <li><a class="treeview-item {{ Request::is('vendors') ? 'active':'' }}" href="{{ url('vendors')}}"><i class="icon fa fa-circle-o"></i> Buyer List </a>
                                 </li>
 
                         </ul>
@@ -263,8 +263,11 @@
                                 </li>
 
                                 <li><a class="treeview-item {{ Request::is('reports/income_expense') ? 'active':'' }}" href="{{ url('reports/income_expense') }}"><i class="icon fa fa-book"></i>
-                                                Income Expense Report
-                                        </a></li>
+                                        Income Expense Report
+                                </a></li>
+                                <li><a class="treeview-item {{ Request::is('reports/chart_balance') ? 'active':'' }}" href="{{ url('reports/chart_balance') }}"><i class="icon fa fa-book"></i>
+                                        Chart of Account Balance Report
+                                </a></li>
 
 
                                 {{-- production report --}}

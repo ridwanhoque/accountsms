@@ -45,13 +45,13 @@
                   <table class="table no-spacing">
                     <thead>
                       <tr>
-                        <th>Order ID : {{ $payment_voucher->id }}</th>
-                        <th colspan="2"></th>
+                        <th colspan="4">Order ID : {{ $payment_voucher->id }}</th>
                       </tr>
                       <tr>
                         <th>Chart Of Account</th>
                         <th>Description</th>
-                        <th class="text-right">Amount</th>
+                        <th class="text-right">Debit</th>
+                        <th class="text-right">Credit</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -59,14 +59,26 @@
                       <tr>
                         <td>{{ $details->chart_of_account->head_name ?? '' }}</td>
                         <td>{{ $details->description }}</td>
-                        <td class="text-right">{{ $details->amount }}</td>
+                        <td class="text-right">
+                          {{ $details->chart_of_account->owner_type_id == config('app.owner_party') ? $details->amount:0 }}
+                        </td>
+                        <td class="text-right">
+                          {{ in_array($details->chart_of_account->owner_type_id, config('app.cash_bank_ids')) ? $details->amount:0 }}
+                        </td>
                       </tr>
                       @endforeach
                       <tr>
-                        <td colspan="3" style="text-align:right">Total : <strong>{{ $payment_voucher->amount }} {{ config('app.tk') }}</strong></td>
+                        <td colspan="4"></td>
                       </tr>
                       <tr>
-                        <td colspan="3">&nbsp;</td>
+                        <td colspan="3" style="text-align:right"><strong>{{ $payment_voucher->amount }}</strong></td>
+                        <td style="text-align:right"><strong>{{ $payment_voucher->amount }}</strong></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">Total : <strong>{{ Formatter::toWords($payment_voucher->amount) }} {{ config('app.tk') }}</strong></td>
                       </tr>
                       <tr>
                         <td> <b> {{ $payment_voucher->chart_of_account->head_name ?? '' }} </b><br> <br><br> <hr>Signature and Date</td>

@@ -100,7 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('account-information', 'AccountInformationController');
     Route::resource('payment-method', 'PaymentMethodController');
     Route::resource('party', 'PartyController');
-    Route::resource('vendor', 'VendorController');
+    Route::resource('vendors', 'VendorController');
     Route::resource('voucher', 'VoucherController');
     Route::resource('pettycash_charts', 'PettycashChartController');
     Route::get('get-payment-method', 'VoucherController@get_payment_method')->name('voucher.get-payment-method');
@@ -187,6 +187,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('ledger_balance', 'Accounts\LedgerBalanceReportController@report');
         Route::get('trial_balance', 'Accounts\TrialBalanceController@report');
         Route::get('trial_balance/{id}', 'Accounts\TrialBalanceController@details');
+        //new
+        Route::get('chart_balance/{id?}', 'Accounts\ChartBalanceReportController@index');
     });
 
 

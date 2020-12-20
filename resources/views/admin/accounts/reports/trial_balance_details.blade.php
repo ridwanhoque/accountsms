@@ -70,7 +70,7 @@
                 <div class="tile" style="height: 100%">
                     <div class="tile-body">
                              
-                        <h3>Incomes</h3>
+                        {{-- <h3>Incomes</h3> --}}
                                     <table class="table table-hover table-bordered" id="chartOfAccountTable">
                                         <thead>
                                         <tr>

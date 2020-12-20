@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Vendor/Supplier')
+@section('title','Supplier')
 @section('content')
 
 

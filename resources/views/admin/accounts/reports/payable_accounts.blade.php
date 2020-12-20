@@ -84,7 +84,7 @@
                             @foreach($payable_accounts as $payable_account)
                                 <tr>
                                     <td>{{ $payable_account->head_name }}</td>
-                                    <td>{{ $payable_account->balance }}</td>
+                                    <td>{{ $payable_account->balance*(-1) }}</td>
                                 </tr>
                             @endforeach
 
