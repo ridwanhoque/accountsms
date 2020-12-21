@@ -27,7 +27,7 @@ class ReceiveVoucherRepository implements CrudInterface
         $data['bank_cash_charts'] = ChartOfAccount::noChild()
 			->where('company_id', auth()->user()->id)
             ->where('owner_type_id', config('app.owner_party'))
-            ->where('balance', '>', 0)
+            // ->where('balance', '>', 0)
             ->pluck('head_name', 'id');
 
         $data['chart_of_accounts'] = ChartOfAccount::noChild()

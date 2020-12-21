@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Batch;
+use App\ChartOfAccount;
 use App\Color;
 use App\ConfigMaterial;
 use App\Http\Requests\SheetProductionStoreRequest;
@@ -259,49 +260,9 @@ class SheetProductionController extends Controller
         }
     }
 
-    public function test($id = null)
+    public function test()
     {   
-
-        if($id > 0){
-            
-        }
-
-        $debit_credit = TransactionDetails::paginate(25);
-        return view('admin.sheet_productions.test', compact('debit_credit'));
-
-        // $count = ConfigMaterial::count();
-
-        // $currentUser = Auth::user();
-        // $rm_stock = RawMaterialStock::where('company_id', $currentUser->company_id);
-        // if ($rm_stock->count() < 1) {
-        //     return \redirect('purchases')->with('error_message', 'Please purchase product!');
-        // }
-        // $batches = Batch::all();
-        // $statuses = Status::all();
-        // $sub_raw_materials = null;
-        // $sub_raw_material_exist = SubRawMaterial::with('raw_material');
-        // $sub_raw_material_exist->whereHas('raw_material_stocks', function ($q) {
-        //     $q->where('available_quantity', '>', 0);
-        // });
-
-        // if ($sub_raw_material_exist->count() > 0) {
-        //     $sub_raw_materials = $sub_raw_material_exist->get();
-        // }
-
-        // $colors = Color::colors();
-        // $sheet_sizes = SheetSize::sheetSizes();
-
-        // $sheet_wastage_stock = WastageStock::where('type', $this->wastage_types[0])->first()->available_quantity;
-        // $forming_wastage_stock = WastageStock::where('type', $this->wastage_types[1])->first()->available_quantity;
-
-        // $fm_kutchas = FmKutcha::fmKutchas();
-
-        // $raw_materials = TransactionDetails::paginate(25);
-
-        // return view('admin.sheet_productions.test', compact([
-        //     'batches', 'statuses', 'sub_raw_materials', 'colors', 'sheet_sizes',
-        //     'sheet_wastage_stock', 'forming_wastage_stock', 'fm_kutchas', 'raw_materials'
-        // ]));
+        return ChartOfAccount::pluck('head_name');
     }
 
 

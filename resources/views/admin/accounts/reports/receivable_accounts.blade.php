@@ -83,7 +83,7 @@
                             @foreach($receivable_accounts as $receivable_account)
                                 <tr>
                                     <td>{{ $receivable_account->head_name }}</td>
-                                    <td>{{ $receivable_account->balance*(-1) }}</td>
+                                    <td>{{ $receivable_account->balance }}</td>
                                 </tr>
                             @endforeach
 

@@ -36,10 +36,13 @@ class PurchaseRepository implements CrudInterface
         return true;
     }
 
-    public function save_chart_of_account($request, $key){
-        $chart_of_account = ChartOfAccount::find($request->chart_of_account_ids[$key]);
-        $key == 1 ? $chart_of_account->increment('balance', $request->total_payable):$chart_of_account->decrement('balance', $request->total_payable);
-
+    public function save_chart_of_account($chart_id, $amount, $key){
+        $chart_of_account = ChartOfAccount::find($chart_id);
+        $key == 1 ? $chart_of_account->increment('balance', $amount):$chart_of_account->decrement('balance', $amount);
+        
+        if($chart_of_account->parent_id != null){
+            $this->save_chart_of_account($chart_of_account->parent_id, $amount, $key);
+        }
         return true;
     }
 
@@ -70,7 +73,7 @@ class PurchaseRepository implements CrudInterface
             $this->transaction_details_save($request, $transaction, $key);
 
             //store data into 
-            $this->save_chart_of_account($request, $key);
+            $this->save_chart_of_account($chart, $request->total_payable, $key);
 
             //store data into daily chart of account
             $this->save_chart_of_account_balance($request, $key);
@@ -145,6 +148,9 @@ class PurchaseRepository implements CrudInterface
             $purchase_details->raw_material_sub_total = $request->total[$key];
             $purchase_details->save();
         }
+
+        // //hit in accounts 
+        // $this->transaction_save($request, $purchase);
 
 
         return true;

@@ -53,25 +53,54 @@
                       </tr>
                       <tr>
                         <th>Product Name</th>
-                        <th>Quantity</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Price</th>
+                        <th class="text-right">Sub Total</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($sale->sale_details as $details)
                       <tr>
                         <td>{{ $details->product->name }}</td>
-                        <td>{{ $details->quantity }}</td>
+                        <td class="text-right">{{ $details->quantity }}</td>
+                        <td class="text-right">{{ $details->unit_price }}</td>
+                        <td class="text-right">{{ $details->quantity*$details->unit_price }}</td>
                       </tr>
                       @endforeach
 
+                      
+                      @if($sale->invoice_tax > 0)
                       <tr>
-                        <td>Tax : </td>
-                        <td>{{ $sale->invoice_tax }}</td>
+                        <td colspan="4"></td>
                       </tr>
-                      {{-- <tr>
-                        <td>Vat : </td>
-                        <td>{{ $sale->invoice_vat }}</td>
-                      </tr> --}}
+                      <tr>
+                        <td class="text-right" colspan="3"><strong>Tax : </strong></td>
+                        <td class="text-right"><strong>{{ $sale->invoice_tax }}</strong></td>
+                      </tr>
+                      @endif
+
+                      @if($sale->invoice_tax > 0)
+                      <tr>
+                        <td colspan="4"></td>
+                      </tr>
+                      <tr>
+                        <td class="text-right" colspan="3"><strong>Vat : </strong></td>
+                        <td class="text-right"><strong>{{ $sale->invoice_vat }}</strong></td>
+                      </tr>
+                      @endif
+                      <tr>
+                        <td colspan="4"></td>
+                      </tr>
+                      <tr>
+                        <td class="text-right" colspan="3"><strong>Total : </strong></td>
+                        <td class="text-right"><strong>{{ $sale->total_payable }}</strong></td>
+                      </tr>
+
+                      <tr>
+                        <td>In Words : <strong>{{ Formatter::toWords($sale->total_payable) }} {{ config('app.tk') }}</strong></td>
+                        <td colspan="3"></td>
+                      </tr>
+
                       <tr>
                         <td> <b> Supplier : {{ $sale->party->name }} </b><br> <br><br> <hr>Signature and Date</td>
                         <td style="text-align:right" colspan="5"> <b>Issued By : {{ $sale->company->name }} </b> <br> <br> <br> <hr> Signature and Date</td>

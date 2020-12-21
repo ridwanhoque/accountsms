@@ -74,6 +74,11 @@ class ChartOfAccountController extends Controller
         $chartOfAccount->balance = $request->opening_balance;
         $chartOfAccount->save();
 
+        if($request->parent_id > 0){
+            $this->update_parent_chart($request->parent_id, $request->opening_balance);
+        }
+
+
         return redirect()->back()->with('massage','Chart Of Account added successful.');
 
     }

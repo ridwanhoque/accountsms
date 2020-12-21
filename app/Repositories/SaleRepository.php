@@ -29,14 +29,14 @@ class SaleRepository implements CrudInterface
             'chart_of_account_id' => $request->chart_of_account_ids[$key],
             'amount' => $key != 1 ? $amount : $amount * (-1),
         ]);
-
-        return true;
+        
+        return false;
     }
 
     public function save_chart_of_account($request, $key)
     {
         $chart_of_account = ChartOfAccount::find($request->chart_of_account_ids[$key]);
-        $key == 1 ? $chart_of_account->increment('balance', $request->total_payable) : $chart_of_account->decrement('balance', $request->total_payable);
+        $key == 1 ? $chart_of_account->decrement('balance', $request->total_payable) : $chart_of_account->increment('balance', $request->total_payable);
 
         return true;
     }

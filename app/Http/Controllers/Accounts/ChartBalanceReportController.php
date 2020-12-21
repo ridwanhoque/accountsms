@@ -24,7 +24,14 @@ class ChartBalanceReportController extends Controller
                                     $query->where('parent_id', $id);
                                 })
                                 ->paginate(10);
+
+                                $cols = ['parent_id', 'id', 'tire'];
+        $charts_tree = ChartOfAccount::query(function($query) use($cols){
+            foreach($cols as $col){
+                $query->orderBy($col, 'asc');
+            }
+        })->pluck('head_name');
                                 
-        return view('admin.accounting.report.chart_balance', compact('chart_of_accounts'));
+        return view('admin.accounting.report.chart_balance', compact('chart_of_accounts', 'charts_tree'));
     }
 }

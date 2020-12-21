@@ -29,13 +29,13 @@ class PaymentVoucherRepository implements CrudInterface
         $data['chart_of_accounts'] = ChartOfAccount::noChild()
 			->where('company_id', companyId())
             ->where('owner_type_id', config('app.owner_party'))
-            ->where('balance', '<', 0)
+            // ->where('balance', '<', 0)
             ->pluck('head_name', 'id');
 
         $data['bank_cash_charts'] = ChartOfAccount::noChild()
 			->where('company_id', companyId())
             ->whereIn('owner_type_id', config('app.cash_bank_ids'))
-            ->where('balance', '>', 0)
+            // ->where('balance', '>', 0)
             ->pluck('head_name', 'id');
 
         return $data;
@@ -167,8 +167,7 @@ class PaymentVoucherRepository implements CrudInterface
 
     public function save_credit_chart_of_account_parents($credit_chart_id, $credit_amount){
         $parent_chart = ChartOfAccount::find($credit_chart_id);
-        $parent_chart->balance -= $credit_amount;
-        $parent_chart->save();
+        $parent_chart->decrement('balance',$credit_amount);
 
         if($parent_chart->parent_id > 0){
             $this->save_credit_chart_of_account_parents($parent_chart->parent_id, $credit_amount);
@@ -180,8 +179,7 @@ class PaymentVoucherRepository implements CrudInterface
     
     public function save_debit_chart_of_account_parents($debit_chart_id, $debit_amount){
         $parent_chart = ChartOfAccount::find($debit_chart_id);
-        $parent_chart->balance += $debit_amount;
-        $parent_chart->save();
+        $parent_chart->increment('balance', $debit_amount);
 
         if($parent_chart->parent_id > 0){
             $this->save_debit_chart_of_account_parents($parent_chart->parent_id, $debit_amount);
@@ -213,7 +211,7 @@ class PaymentVoucherRepository implements CrudInterface
                 //update chart_of account current balance
                 // $this->save_credit_chart_of_account($credit_chart_id, $credit_amount);
 
-                //store datewise debit credit into chart of account balance table
+                //store datewise credit credit into chart of account balance table
                 $this->save_credit_chart_of_account_balance($credit_chart_id, $credit_amount);
 
                 //update all parent chart of accounts as it effects upto top tire i.e. tire 1
