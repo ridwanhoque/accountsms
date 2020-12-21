@@ -33,10 +33,15 @@ class SaleRepository implements CrudInterface
         return false;
     }
 
-    public function save_chart_of_account($request, $key)
+    public function save_chart_of_account($request, $key, $chart_id = null)
     {
-        $chart_of_account = ChartOfAccount::find($request->chart_of_account_ids[$key]);
+        $chart_id = $chart_id != null ? $chart_id : $request->chart_of_account_ids[$key];
+        $chart_of_account = ChartOfAccount::find($chart_id);
         $key == 1 ? $chart_of_account->decrement('balance', $request->total_payable) : $chart_of_account->increment('balance', $request->total_payable);
+
+        if($chart_of_account->parent_id > 0){
+            $this->save_chart_of_account($request, $key, $chart_of_account->parent_id);
+        }
 
         return true;
     }

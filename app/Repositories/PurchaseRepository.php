@@ -40,7 +40,7 @@ class PurchaseRepository implements CrudInterface
         $chart_of_account = ChartOfAccount::find($chart_id);
         $key == 1 ? $chart_of_account->increment('balance', $amount):$chart_of_account->decrement('balance', $amount);
         
-        if($chart_of_account->parent_id != null){
+        if($chart_of_account->parent_id > 0){
             $this->save_chart_of_account($chart_of_account->parent_id, $amount, $key);
         }
         return true;
