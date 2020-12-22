@@ -82,7 +82,9 @@
 
                             @foreach($receivable_accounts as $receivable_account)
                                 <tr>
-                                    <td>{{ $receivable_account->head_name }}</td>
+                                    <td><a href="{{ url('accounting/receive_vouchers/create') }}">
+                                        {{ $receivable_account->head_name }}
+                                    </a></td>
                                     <td>{{ $receivable_account->balance }}</td>
                                 </tr>
                             @endforeach
