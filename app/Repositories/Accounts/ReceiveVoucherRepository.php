@@ -98,10 +98,22 @@ class ReceiveVoucherRepository implements CrudInterface
     public function save_credit_chart_of_account($credit_chart_id, $credit_amount){
        
             $chart_of_account = ChartOfAccount::find($credit_chart_id);
-            $chart_of_account->increment('balance', $credit_amount);
+            $chart_of_account->decrement('balance', $credit_amount);
 
         return true;
     }
+
+    public function save_credit_chart_of_account_parents($credit_chart_id, $credit_amount){
+        $parent_chart = ChartOfAccount::find($credit_chart_id);
+        $parent_chart->decrement('balance',$credit_amount);
+
+        if($parent_chart->parent_id > 0){
+            $this->save_credit_chart_of_account_parents($parent_chart->parent_id, $credit_amount);
+        }
+
+        return true;
+    }
+
 
     public function save_debit_chart_of_account_balance($debit_chart_id, $debit_amount){
         $previous_closing_balance = ChartOfAccountBalance::orderByDesc('date')->where('chart_of_account_id', $debit_chart_id)->skip(1)->take(1)->get();
@@ -140,6 +152,18 @@ class ReceiveVoucherRepository implements CrudInterface
 
         return true;
     }
+    
+    public function save_debit_chart_of_account_parents($debit_chart_id, $debit_amount){
+        $parent_chart = ChartOfAccount::find($debit_chart_id);
+        $parent_chart->increment('balance', $debit_amount);
+
+        if($parent_chart->parent_id > 0){
+            $this->save_debit_chart_of_account_parents($parent_chart->parent_id, $debit_amount);
+        }
+
+        return true;
+    }
+
 
     public function save_transaction($receive_voucher, $request){
         $transaction = new Transaction;
@@ -181,7 +205,7 @@ class ReceiveVoucherRepository implements CrudInterface
                 $this->save_receive_voucher_details($receive_voucher, $credit_chart_id, $credit_description, $credit_amount);
 
                 //update chart_of account current balance
-                $this->save_credit_chart_of_account($credit_chart_id, $credit_amount);
+                $this->save_credit_chart_of_account_parents($credit_chart_id, $credit_amount);
 
                 //store datewise debit credit into chart of account balance table
                 $this->save_credit_chart_of_account_balance($credit_chart_id, $credit_amount);
@@ -200,7 +224,7 @@ class ReceiveVoucherRepository implements CrudInterface
                 $this->save_receive_voucher_details($receive_voucher, $debit_chart_id, $debit_description, $debit_amount);
 
                 //update chart_of account current balance
-                $this->save_debit_chart_of_account($debit_chart_id, $debit_amount);
+                $this->save_debit_chart_of_account_parents($debit_chart_id, $debit_amount);
 
                 //store datewise debit credit into chart of account balance table
                 $this->save_debit_chart_of_account_balance($debit_chart_id, $debit_amount);

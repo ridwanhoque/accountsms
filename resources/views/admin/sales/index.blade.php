@@ -37,6 +37,8 @@
                 <th>Delivery Date</th>
                 <th>Order Receive Reference</th>
                 <th>Order Receive Supplier</th>
+                <th>Party</th>
+                <th>Total</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -47,6 +49,8 @@
                 <td>{{ $sale->sale_delivery_date ?? '-' }}</td>
                 <td>{{ $sale->sale_reference }}</td>
                 <td>{{ $sale->party->name ?? '' }}</td>
+                
+                <td>{{ $sale->total_payable ?? '' }}</td>
                 <td>
                   <a class="btn btn-info btn-sm" title="Edit" href="{{ route('sales.edit',$sale->id) }}"> <i
                       class="fa fa-edit"></i> </a>

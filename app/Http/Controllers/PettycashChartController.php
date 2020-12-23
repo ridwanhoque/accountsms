@@ -59,7 +59,7 @@ class PettycashChartController extends Controller
         $pettycash_charts = $this->pettycashChartRepo->store($request);
 
         if($pettycash_charts){
-            return \redirect('accounting/pettycash_charts')->with('message', Message::created('pettycash_chart'));
+            return \redirect('pettycash_charts')->with('message', Message::created('pettycash_chart'));
         }
         
     }
@@ -106,7 +106,7 @@ class PettycashChartController extends Controller
         $pettycash_charts = $this->pettycashChartRepo->update($request, $pettycashChart);
 
         if($pettycash_charts){
-            return \redirect('accounting/pettycash_charts')->with('message', Message::updated('pettycash_chart'));
+            return \redirect('pettycash_charts')->with('message', Message::updated('pettycash_chart'));
         }
     }
 
