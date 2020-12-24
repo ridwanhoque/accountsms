@@ -83,7 +83,7 @@
                             @foreach($incomes as $income)
                                 <tr>
                                     <td>{{ $income->chart_of_account->head_name }}</td>
-                                    <td>{{ $income->amount*(-1) }}</td>
+                                    <td>{{ Formatter::addComma($income->amount*(-1)) }}</td>
                                 </tr>
                             @endforeach
 
@@ -113,7 +113,7 @@
                             @foreach($expenses as $expense)
                                 <tr>
                                     <td>{{ $expense->chart_of_account->head_name }}</td>
-                                    <td>{{ $expense->amount }}</td>
+                                    <td>{{ Formatter::addComma($expense->amount) }}</td>
                                 </tr>
                             @endforeach
 

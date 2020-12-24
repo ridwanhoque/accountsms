@@ -97,7 +97,7 @@ class SaleRepository implements CrudInterface
             $sale->invoice_tax = $request->invoice_tax;
             $sale->tax_percent = $request->tax_percent;
             $sale->total_payable = $request->total_payable;
-            $sale->chart_of_account_id = $request->chart_of_account_id;
+            $sale->chart_of_account_id = $request->chart_of_account_ids[0];
             $sale->save();
     
             foreach ($request->product_ids as $key => $product_id_db) {
@@ -145,7 +145,7 @@ class SaleRepository implements CrudInterface
         $sale->invoice_tax = $request->invoice_tax;
         $sale->tax_percent = $request->tax_percent;
         $sale->total_payable = $request->total_payable;
-        $sale->chart_of_account_id = $sale->chart_of_account_id;
+        $sale->chart_of_account_id = $sale->chart_of_account_ids[0];
         $sale->save();
 
         foreach ($request->product_ids as $key => $product_id_db) {

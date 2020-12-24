@@ -37,6 +37,7 @@
                     <th>Order ID</th>
                     <th>Supplier</th>
                     <th>Total Payable</th>
+                    <th>Party (Acc)</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -48,7 +49,8 @@
                       <td>{{ $purchase->batch->name ?? '-' }}</td>
                       <td>{{ $purchase->id }}</td>
                       <td>{{ $purchase->party->name ?? '-' }}</td>
-                      <td>{{ $purchase->total_payable }} {{ config('app.tk') }}</td>
+                      <td>{{ Formatter::addComma($purchase->total_payable) }} {{ config('app.tk') }}</td>
+                      <td>{{ $purchase->chart_of_account->head_name }}</td>
                       <td>
                           
                         <a class="btn btn-primary btn-sm" title="View" href="{{ route('purchases.show',$purchase->id) }}"> <i class="fa fa-eye"></i> </a> 

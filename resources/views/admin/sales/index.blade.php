@@ -50,7 +50,7 @@
                 <td>{{ $sale->sale_reference }}</td>
                 <td>{{ $sale->party->name ?? '' }}</td>
                 
-                <td>{{ $sale->total_payable ?? '' }}</td>
+                <td>{{ Formatter::addComma($sale->total_payable) ?? '' }}</td>
                 <td>
                   <a class="btn btn-info btn-sm" title="Edit" href="{{ route('sales.edit',$sale->id) }}"> <i
                       class="fa fa-edit"></i> </a>

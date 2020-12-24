@@ -96,7 +96,7 @@ class PurchaseRepository implements CrudInterface
             $purchase->invoice_tax = $request->invoice_tax;
             $purchase->tax_percent = $request->tax_percent;
             $purchase->total_payable = $request->total_payable;
-            $purchase->chart_of_account_id = $request->chart_of_account_id;
+            $purchase->chart_of_account_id = $request->chart_of_account_ids[0];
             $purchase->save();
     
             foreach ($request->sub_raw_material_ids as $key => $rm_id) {
@@ -136,7 +136,7 @@ class PurchaseRepository implements CrudInterface
         $purchase->invoice_tax = $request->invoice_tax;
         $purchase->tax_percent = $request->tax_percent;
         $purchase->total_payable = $request->total_payable;
-        $purchase->chart_of_account_id = $request->chart_of_account_id;
+        $purchase->chart_of_account_id = $request->chart_of_account_ids[0];
         $purchase->save();
 
 

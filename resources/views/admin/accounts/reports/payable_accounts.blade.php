@@ -88,7 +88,7 @@
                                         {{ $payable_account->head_name }}
                                     </a>
                                 </td>
-                                <td>{{ $payable_account->balance*(-1) }}</td>
+                                <td>{{ Formatter::addComma($payable_account->balance*(-1)) }}</td>
                             </tr>
                             @endforeach
 

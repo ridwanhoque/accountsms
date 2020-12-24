@@ -88,10 +88,10 @@
                                 <tr>
                                     <td>{{ $ledger->date }}</td>
                                     <td>{{ $ledger->chart_of_account->head_name ?? '' }}</td>
-                                    <td>{{ $ledger->opening_balance }}</td>
-                                    <td>{{ $ledger->debit_amount }}</td>
-                                    <td>{{ $ledger->credit_amount }}</td>
-                                    <td>{{ $ledger->closing_balance }}</td>
+                                    <td>{{ Formatter::addComma($ledger->opening_balance) }}</td>
+                                    <td>{{ Formatter::addComma($ledger->debit_amount) }}</td>
+                                    <td>{{ Formatter::addComma($ledger->credit_amount) }}</td>
+                                    <td>{{ Formatter::addComma($ledger->closing_balance) }}</td>
                                 </tr>
                             @endforeach
 

@@ -84,7 +84,7 @@
                             @foreach($liabilities as $liability)
                                 <tr>
                                     <td>{{ $liability->head_name }}</td>
-                                    <td>{{ $liability->amount*(-1) }}</td>
+                                    <td>{{ Formatter::addComma($liability->amount)*(-1) }}</td>
                                 </tr>
                             @endforeach
 
@@ -114,7 +114,7 @@
                             @foreach($assets as $asset)
                                 <tr>
                                     <td>{{ $asset->head_name }}</td>
-                                    <td>{{ $asset->amount }}</td>
+                                    <td>{{ Formatter::addComma($asset->amount) }}</td>
                                 </tr>
                             @endforeach
 

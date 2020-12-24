@@ -88,7 +88,7 @@
                                                                     <td>
                                                                         <a href="{{ url('/reports/trial_balance', $chart->id) }}">{{ $chart->head_name ?? '' }}</a>
                                                                     </td>
-                                                                    <td>{{ $chart->balance }}</td>
+                                                                    <td>{{ Formatter::addComma($chart->balance) }}</td>
                                                                 </tr>
                                                             @endforeach
             
@@ -110,7 +110,7 @@
                                                                 <td>
                                                                     <a href="{{ url('/reports/trial_balance', $chart->id) }}">{{ $chart->head_name ?? '' }}</a>
                                                                 </td>
-                                                                <td>{{ $chart->balance }}</td>
+                                                                <td>{{ Formatter::addComma($chart->balance) }}</td>
                                                             </tr>
                                                         @endforeach
             
@@ -146,7 +146,7 @@
                                                                     <td>
                                                                         <a href="{{ url('/reports/trial_balance', $chart->id) }}">{{ $chart->head_name ?? '' }}</a>
                                                                     </td>
-                                                                    <td>{{ $chart->balance }}</td>
+                                                                    <td>{{ Formatter::addComma($chart->balance) }}</td>
                                                                 </tr>
                                                             @endforeach
             
@@ -168,7 +168,7 @@
                                                                 <td>
                                                                     <a href="{{ url('/reports/trial_balance', $chart->id) }}">{{ $chart->head_name ?? '' }}</a>
                                                                 </td>
-                                                                <td>{{ $chart->balance }}</td>
+                                                                <td>{{ Formatter::addComma($chart->balance) }}</td>
                                                             </tr>
                                                         @endforeach
             

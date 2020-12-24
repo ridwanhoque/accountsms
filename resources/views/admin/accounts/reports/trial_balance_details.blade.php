@@ -87,7 +87,7 @@
                                                         {{ $chart->head_name ?? '' }}
                                                     </a>
                                                 </td>
-                                                <td>{{ $chart->balance }}</td>
+                                                <td>{{ Formatter::addComma($chart->balance) }}</td>
                                             </tr>
                                         @endforeach
 

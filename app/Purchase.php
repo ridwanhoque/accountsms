@@ -69,6 +69,9 @@ class Purchase extends Model
         return $this->belongsTo('App\Company');
     }
 
+    public function chart_of_account(){
+        return $this->belongsTo('App\ChartOfAccount');
+    }
 
     public function scopeStatuses($q){
         return $q->where('company_id', 1)->get();

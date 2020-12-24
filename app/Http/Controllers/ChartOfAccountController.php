@@ -61,21 +61,22 @@ class ChartOfAccountController extends Controller
          } else{
              $tire = 1;
          }
+        $opening_balance = $request->opening_balance > 0 ? $request->opening_balance:0;
         $chartOfAccount->type = $request->type;
         $chartOfAccount->head_name = $request->head_name;
         $chartOfAccount->account_code = $request->account_code;
         $chartOfAccount->status = $request->status;
         $chartOfAccount->parent_id = $request->parent_id;
         $chartOfAccount->tire = $tire;
-        $chartOfAccount->opening_balance = $request->opening_balance;
+        $chartOfAccount->opening_balance = $opening_balance;
         $chartOfAccount->is_posting = $request->is_posting;
         $chartOfAccount->chart_type_id = $request->chart_type_id;
         $chartOfAccount->owner_type_id = $request->owner_type_id;
-        $chartOfAccount->balance = $request->opening_balance;
+        $chartOfAccount->balance = $opening_balance;
         $chartOfAccount->save();
 
         if($request->parent_id > 0){
-            $this->update_parent_chart($request->parent_id, $request->opening_balance);
+            $this->update_parent_chart($request->parent_id, $opening_balance);
         }
 
 
@@ -134,14 +135,14 @@ class ChartOfAccountController extends Controller
             $tire = $chart_tire->tire + 1;
         }else{
             $tire = 1;
-        }
+        }        
         $chartOfAccount->type = $request->type;
         $chartOfAccount->head_name = $request->head_name;
         // $chartOfAccount->account_code = $request->account_code;
         $chartOfAccount->status = $request->status;
         $chartOfAccount->parent_id = $request->parent_id;
         $chartOfAccount->tire = $tire;
-        $chartOfAccount->balance += $chartOfAccount->opening_balance > 0 ? 0:$request->opening_balance;
+        $chartOfAccount->increment('balance', $amount);
         $chartOfAccount->opening_balance = $chartOfAccount->opening_balance > 0 ? $chartOfAccount->opening_balance:$request->opening_balance;
         $chartOfAccount->is_posting = $request->is_posting;
         $chartOfAccount->chart_type_id = $request->chart_type_id;
@@ -206,7 +207,7 @@ class ChartOfAccountController extends Controller
     public function update_parent_chart($parent_chart_id, $amount){
         
         $parent_chart = ChartOfAccount::find($parent_chart_id);
-        $parent_chart->balance += $amount;
+        $parent_chart->increment('balance', $amount);
         $parent_chart->save();
 
         if($parent_chart->parent_id > 0){
