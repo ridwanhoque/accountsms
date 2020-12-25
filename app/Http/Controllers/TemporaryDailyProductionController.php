@@ -49,9 +49,9 @@ class TemporaryDailyProductionController extends Controller
             $q->where('available_quantity_kg', '>', 0)
                 ->where('available_quantity_roll', '>', 0);
         })->get();
-        $products = Product::products();
+        $products = Product::with('raw_material')->products();
         $machines = Machine::where('company_id', auth()->user()->company_id)->pluck('name', 'id');
-        $fm_kutchas = FmKutcha::fmKutchas();
+        $fm_kutchas = FmKutcha::with('raw_material')->fmKutchas();
         return view('admin.temporary_daily_productions.create', compact('sheet_size_color_materials', 'products', 'machines', 'fm_kutchas'));
     }
 
@@ -112,7 +112,7 @@ class TemporaryDailyProductionController extends Controller
                 ->where('available_quantity_roll', '>', 0);
         })->get();
 
-        $fm_kutchas = FmKutcha::fmKutchas();
+        $fm_kutchas = FmKutcha::with('raw_material')->fmKutchas();
         
         return view('admin.temporary_daily_productions.edit', compact([
             'dailyProduction', 'products', 'machines', 'statuses', 'sheet_production_details',

@@ -9,7 +9,7 @@ use App\ChartOfAccountBalance;
 class LedgerBalanceReportController extends Controller
 {
     public function report(){
-        $ledgers = ChartOfAccountBalance::orderByDesc('id')->paginate(25);
+        $ledgers = ChartOfAccountBalance::with('chart_of_account')->orderByDesc('id')->paginate(25);
         return view('admin.accounts.reports.ledger_balance_report', compact('ledgers'));
     }
 }

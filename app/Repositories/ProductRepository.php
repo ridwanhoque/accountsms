@@ -9,7 +9,9 @@ use App\ProductStock;
 class ProductRepository implements CrudInterface{
 
     public function index(){
-        return Product::orderByDesc('id')->products();
+        return Product::with([
+            'color', 'raw_material'
+        ])->orderByDesc('id')->products();
     }
 
     public function create(){

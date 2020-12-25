@@ -26,8 +26,12 @@ class DailyProductionRepository implements CrudInterface
 
     public function index()
     {
-        return DailyProduction::where('company_id', auth()->user()->company_id)->where('is_approved', 1)
-		->with('total_sheet_kutchas')->orderByDesc('id')->get();
+        return DailyProduction::with([
+                'daily_production_details.product.raw_material', 
+                'daily_production_details.sheet_size_color.color'
+            ])
+            ->where('company_id', auth()->user()->company_id)->where('is_approved', 1)
+		    ->with('total_sheet_kutchas')->orderByDesc('id')->get();
     }
 
     public function create()

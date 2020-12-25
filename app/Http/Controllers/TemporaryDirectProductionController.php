@@ -55,7 +55,7 @@ class TemporaryDirectProductionController extends Controller
         $currentUser = Auth::user();
         $direct_production_materials = ConfigMaterial::where('name', 'App\DirectProduction')->pluck('raw_material_id');
         $batches = Batch::where('company_id', $currentUser->company_id)->pluck('name', 'id');
-        $products = Product::products()->whereIn('raw_material_id', $direct_production_materials);
+        $products = Product::with('raw_material')->products()->whereIn('raw_material_id', $direct_production_materials);
         $machines = Machine::where('company_id', $currentUser->company_id)->pluck('name', 'id');
         $statuses = Status::all();
 
@@ -75,7 +75,7 @@ class TemporaryDirectProductionController extends Controller
         //     $q->where('available_kg', '>', 0);
         // })->get();
 
-        $fm_kutchas = FmKutcha::get(['id', 'name', 'raw_material_id']);
+        $fm_kutchas = FmKutcha::with('raw_material')->get(['id', 'name', 'raw_material_id']);
 
         $sheet_size_color_materials = SheetSizeColor::whereHas('sheetproductiondetails_stocks', function($q){
             $q->where('available_quantity_kg', '>', 0)
@@ -138,7 +138,7 @@ class TemporaryDirectProductionController extends Controller
         $currentUser = auth()->user();
         $direct_production_materials = ConfigMaterial::where('name', 'App\DirectProduction')->pluck('raw_material_id');
         $batches = Batch::where('company_id', $currentUser->company_id)->pluck('name', 'id');
-        $products = Product::products()->whereIn('raw_material_id', $direct_production_materials);
+        $products = Product::with('raw_material')->products()->whereIn('raw_material_id', $direct_production_materials);
         $machines = Machine::where('company_id', $currentUser->company_id)->pluck('name', 'id');
         $statuses = Status::all();
 
@@ -152,7 +152,7 @@ class TemporaryDirectProductionController extends Controller
         // })->get();
 
 
-        $fm_kutchas = FmKutcha::get(['id', 'name', 'raw_material_id']);
+        $fm_kutchas = FmKutcha::with('raw_material')->get(['id', 'name', 'raw_material_id']);
 
         if ($sub_raw_material_exist->count() > 0) {
             $sub_raw_materials = $sub_raw_material_exist->get();

@@ -41,12 +41,12 @@ class FormatHelper{
     }
 
     public static function addComma($amount){
-        // return number_format($amount, 0, '.', ', ');
+        return number_format($amount, 0, '.', ', ');
         // foreach(count($amount)){
 
         // }
-        $decimal = explode('.', $amount, 2)[0];
-        return count($decimal[0]);
+      //  $decimal = explode('.', $amount, 2)[0];
+        //return count($decimal[0]);
     }
 
 

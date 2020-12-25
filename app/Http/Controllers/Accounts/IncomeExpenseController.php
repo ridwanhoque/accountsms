@@ -9,12 +9,12 @@ class IncomeExpenseController extends Controller
 {
     public function report()
     {
-        $incomes = TransactionDetails::whereHas('chart_of_account', function ($q) {
+        $incomes = TransactionDetails::with('chart_of_account')->whereHas('chart_of_account', function ($q) {
             $q->where('chart_type_id', 1);
         })
             ->get();
 
-        $expenses = TransactionDetails::whereHas('chart_of_account', function ($q) {
+        $expenses = TransactionDetails::with('chart_of_account')->whereHas('chart_of_account', function ($q) {
             $q->where('chart_type_id', 2);
         })
             ->get();

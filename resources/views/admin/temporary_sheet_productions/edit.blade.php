@@ -75,7 +75,8 @@
                             @isset($sub_raw_materials)
                             @foreach ($sub_raw_materials as $sub_raw_material)
                             <option value="{{ $sub_raw_material->id }}" {{ $sub_raw_material->id == $temp_material->sub_raw_material_id ? 'selected':'' }}>
-                              {{ $sub_raw_material->raw_material->name.' - '.$sub_raw_material->name }}</option>
+                              {{ $sub_raw_material->raw_material->name.' - '.$sub_raw_material->name }}
+                            </option>
                             @endforeach
                             @endisset
                           </select>

@@ -30,7 +30,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::orderByDesc('id')->paginate(25);
+        $sales = Sale::with('party', 'chart_of_account')->orderByDesc('id')->paginate(25);
         return view('admin.sales.index', compact('sales'));
     }
 
@@ -44,7 +44,7 @@ class SaleController extends Controller
         $currentUser = Auth::user();
         $parties = Party::parties()->where('party_type', 1);
         $statuses = Status::all();
-        $products = Product::where('company_id', $currentUser->company_id)
+        $products = Product::with('raw_material')->where('company_id', $currentUser->company_id)
             ->whereHas('product_stock', function($q){
                 $q->where('available_quantity', '>', 0);
             })
@@ -106,7 +106,7 @@ class SaleController extends Controller
         $currentUser = Auth::user();
         $parties = Party::parties()->where('party_type', 1);
         $statuses = Status::all();
-        $products = Product::where('company_id', $currentUser->company_id)
+        $products = Product::with('raw_material')->where('company_id', $currentUser->company_id)
             ->whereHas('product_stock', function($q){
                 $q->where('available_quantity', '>', 0);
             })

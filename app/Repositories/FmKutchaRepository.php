@@ -6,7 +6,7 @@ use App\FmKutcha;
 
 class FmKutchaRepository implements CrudInterface{
     public function index(){
-        return FmKutcha::paginate(25);
+        return FmKutcha::with('raw_material')->paginate(25);
     }
 
     public function create(){

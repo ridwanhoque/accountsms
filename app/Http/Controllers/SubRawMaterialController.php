@@ -18,7 +18,8 @@ class SubRawMaterialController extends Controller
     public function index()
     {
         $currentUser = Auth::user();
-        $sub_raw_materials = SubRawMaterial::where('company_id', $currentUser->company_id)->paginate(25);
+        $sub_raw_materials = SubRawMaterial::with('raw_material')
+                                ->where('company_id', $currentUser->company_id)->paginate(25);
 
         return view('admin.sub_raw_materials.index', compact([
             'sub_raw_materials'

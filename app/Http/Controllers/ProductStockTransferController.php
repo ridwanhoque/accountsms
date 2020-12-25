@@ -39,7 +39,7 @@ class ProductStockTransferController extends Controller
     public function create()
     {
         $branches = Branch::branches()->pluck('name', 'id');
-        $products = Product::whereHas('product_stock', function($q){
+        $products = Product::with('raw_material')->whereHas('product_stock', function($q){
             $q->where('available_quantity', '>', 0);
         })->products();
         return view('admin.product_stock_transfers.create', compact([

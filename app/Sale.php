@@ -68,6 +68,10 @@ class Sale extends Model
         return $this->belongsTo('App\Party');
     }
 
+    public function chart_of_account(){
+        return $this->belongsTo('App\ChartOfAccount');
+    }
+
     public function product_delivery_details(){
         return $this->hasMany('App\ProductDeliveryDetails');
     }

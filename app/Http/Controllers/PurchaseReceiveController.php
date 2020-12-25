@@ -33,7 +33,7 @@ class PurchaseReceiveController extends Controller
      */
     public function index()
     {
-        $purchase_receives = PurchaseReceive::paginate(25);
+        $purchase_receives = PurchaseReceive::with('purchase.batch','purchase.party')->paginate(25);
         return view('admin.purchase_receives.index', compact('purchase_receives'));
     }
 

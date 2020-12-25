@@ -19,7 +19,10 @@ class PurchaseRepository implements CrudInterface
 {
     public function index()
     {
-        return Purchase::orderByDesc('id')->where('company_id', companyId())->with('purchase_details')->paginate(25);
+        return Purchase::orderByDesc('id')->where('company_id', companyId())
+                    ->with([
+                        'purchase_details', 'batch', 'party', 'chart_of_account'
+                    ])->paginate(25);
     }
 
     public function create()

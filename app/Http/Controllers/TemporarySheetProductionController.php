@@ -64,7 +64,7 @@ class TemporarySheetProductionController extends Controller
         });
 
         if ($sub_raw_material_exist->count() > 0) {
-            $sub_raw_materials = $sub_raw_material_exist->get();
+            $sub_raw_materials = $sub_raw_material_exist->with('raw_material')->get();
         }
 
         $colors = Color::colors();
@@ -125,7 +125,7 @@ class TemporarySheetProductionController extends Controller
      */
     public function edit($id)
     {
-        $sub_raw_materials = SubRawMaterial::subRawMaterials();
+        $sub_raw_materials = SubRawMaterial::with('raw_material')->subRawMaterials();
         $batches = Batch::where('company_id', auth()->user()->company_id)->pluck('name', 'id');
         $colors = Color::colors();
         $fm_kutchas = FmKutcha::fmKutchas();
