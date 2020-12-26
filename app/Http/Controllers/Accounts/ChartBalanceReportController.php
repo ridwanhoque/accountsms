@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Accounts;
 use App\ChartOfAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\DropdownTrait;
 
 class ChartBalanceReportController extends Controller
 {
+    use DropdownTrait;
     /**
      * Handle the incoming request.
      *
@@ -16,22 +18,25 @@ class ChartBalanceReportController extends Controller
      */
     public function index($id = null)
     {
-        $chart_of_accounts = ChartOfAccount::orderByDesc('balance')
-                                ->when($id == null, function($query){
-                                    $query->where('tire', 1);
-                                })
-                                ->when($id > 0 , function($query) use($id){
-                                    $query->where('parent_id', $id);
-                                })
-                                ->paginate(10);
 
-                                $cols = ['parent_id', 'id', 'tire'];
-        $charts_tree = ChartOfAccount::query(function($query) use($cols){
-            foreach($cols as $col){
-                $query->orderBy($col, 'asc');
-            }
-        })->pluck('head_name');
+        dump(strip_tags($this->chartOfAccountCombo()));
+
+        // $chart_of_accounts = ChartOfAccount::orderByDesc('balance')
+        //                         ->when($id == null, function($query){
+        //                             $query->where('tire', 1);
+        //                         })
+        //                         ->when($id > 0 , function($query) use($id){
+        //                             $query->where('parent_id', $id);
+        //                         })
+        //                         ->paginate(10);
+
+        //                         $cols = ['parent_id', 'id', 'tire'];
+        // $charts_tree = ChartOfAccount::query(function($query) use($cols){
+        //     foreach($cols as $col){
+        //         $query->orderBy($col, 'asc');
+        //     }
+        // })->pluck('head_name');
                                 
-        return view('admin.accounting.report.chart_balance', compact('chart_of_accounts', 'charts_tree'));
+        // return view('admin.accounting.report.chart_balance', compact('chart_of_accounts', 'charts_tree'));
     }
 }
