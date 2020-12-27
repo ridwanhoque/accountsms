@@ -7,7 +7,15 @@ use App\ChartOfAccount;
 trait DropdownTrait{
     public function chartOfAccountCombo(){
 
-        $charts = ChartOfAccount::orderBy('parent_id')->orderBy('id')->select(['id', 'head_name', 'parent_id', 'tire'])->get();
+        $chartsByCode = ChartOfAccount::orderBy('account_code')->get(['head_name', 'tire']);
+        $chartCode = '';
+        foreach($chartsByCode as $chart){
+            $chartCode .= str_repeat('-', $chart->tire).$chart->head_name;
+            $chartCode .= nl2br("\n");
+        }
+
+        $charts = ChartOfAccount::orderBy('parent_id')->orderBy('id')->select(['id', 'head_name', 'parent_id', 'tire'])
+                    ->get();
         $parent_chart_ids = ChartOfAccount::all()->where('parent_id', '>', 0)->pluck('parent_id')->toArray();
         $coa = '';
         // dd($parent_chart_ids);
@@ -23,7 +31,7 @@ trait DropdownTrait{
 
         }
 
-        return $coa;
+        return $chartCode;
 
     }
 }

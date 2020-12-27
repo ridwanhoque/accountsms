@@ -97,76 +97,76 @@ class ChartOfAccountTableSeeder extends Seeder
         $default_charts = [
 
                 //income
-                ['Sales', null, 1, 1, 4, 'sales', '10'], //1
-                ['Purchase Return', null, 1, 1, 4, 'purchase-return', '11'], //2
-                ['Other Income', null, 1, 1, 4, 'other-incomed', '12'], //3
+                ['Sales', null, 1, 1, 4, 'sales', '1000001'], //1
+                ['Purchase Return', null, 1, 1, 4, 'purchase-return', '1000002'], //2
+                ['Other Income', null, 1, 1, 4, 'other-incomed', '1000003'], //3
                     
                 //expense
-                ['Purchase', null, 1, 2, 4, 'purchase', '20'],//4
-                ['Saes Return', null, 1, 2, 4, 'sales-return', '21'],//5
-                ['Direct Expenses', null, 1, 2, 4, 'direct-expenses', '22'],//6
-                ['Factory Overhead', null, 1, 2, 4, 'factory-overhead', '23'],//7
-                ['Depreciation', null, 1, 2, 4, 'depreciation', '24'],//8
-                ['Administrative  Expenses', null, 1, 2, 4, 'administrative-expenses', '25'],//9
-                ['Selling and Distribution  Expenses', null, 1, 2, 4, 'selling-and-distribution-expenses', '26'],//10
-                ['Financial Expenses', null, 1, 2, 4, 'financial-expenses', '27'],//11
+                ['Purchase', null, 1, 2, 4, 'purchase', '2000004'],//4
+                ['Saes Return', null, 1, 2, 4, 'sales-return', '2000005'],//5
+                ['Direct Expenses', null, 1, 2, 4, 'direct-expenses', '2000006'],//6
+                ['Factory Overhead', null, 1, 2, 4, 'factory-overhead', '2000007'],//7
+                ['Depreciation', null, 1, 2, 4, 'depreciation', '2000008'],//8
+                ['Administrative  Expenses', null, 1, 2, 4, 'administrative-expenses', '2000009'],//9
+                ['Selling and Distribution  Expenses', null, 1, 2, 4, 'selling-and-distribution-expenses', '20000010'],//10
+                ['Financial Expenses', null, 1, 2, 4, 'financial-expenses', '20000011'],//11
 
                 //asset
-                ['Non Current Assets', null, 1, 3, 4, 'non-current-assets', '30'],//12
-                    ['Property Plant and Equipment', 12, 2, 3, 4, 'property-plant-and-equipment', '301'],//13
-                        ['Machinery & Equipment', 13, 3, 3, 4, null, '301-1'], //14
-                        ['Land & Land Decoration', 13, 3, 3, 4, null, '301-2'], //15
-                        ['Other Equipment', 13, 3, 3, 4, null, '301-3'], //16
-                        ['Office Equipment', 13, 3, 3, 4, null, '301-4'], //17
-                        ['Electric Equipment', 13, 3, 3, 4, null, '301-5'], //18
-                        ['Furniture & Fixtures', 13, 3, 3, 4, null, '301-6'], //19
-                        ['Computer System', 13, 3, 3, 4, null, '301-7'], //20
-                        ['Building (Shade & Decoration)', 13, 3, 3, 4, null, '301-8'], //21
-                        ['Spare Parts & Tools', 13, 3, 3, 4, null, '301-9'], //22
-                        ['Van & Cookeries', 13, 3, 3, 4, null, '301-10'], //23
-                        ['Office Decoration', 13, 3, 3, 4, null, '301-11'], //24
-                        ['Car & Vehicles', 13, 3, 3, 4, null, '301-12'], //25
-                    ['Preliminary and Pre-Operational Expenses', 12, 2, 3, 4, 'preliminary-and-pre-operational-expenses', '302'],//26
-                ['Current Assets', null, 1, 3, 4, 'current-assets', '31'],//27
-                    ['Advance, Deposits and Pre-payments', 27, 2, 3, 4, 'advance-deposits-and-pre-payments', '311'],//28
-                        ['Advance for Factory & Office Rent', 28, 3, 3, 4, null, '311-1'],//29
-                        ['Advance for Godown Rent', 28, 3, 3, 4, null, '311-2'], //30
-                        ['Advance for RM, PP & Ingredients', 28, 3, 3, 4, null, '311-3'], //31
-                        ['Advance for Others', 28, 3, 3, 4, null, '311-4'], //32
-                        ['Advance to Stuff', 28, 3, 3, 4, null, '311-5'], //33
-                        ['Advance for Various Project Works', 28, 3, 3, 4, null, '311-6'], //34
-                    ['Accounts Receivable and Other Receivables', 27, 2, 3, 4, 'accounts-receivable-and-other-receivable', '312'],//35
-                        ['Corporate', 35, 3, 3, 4, 'corporate', '312-1'],//36
-                        ['Retail', 35, 3, 3, 4, 'retail', '312-2'],//37
-                    ['Inventories', 27, 2, 3, 4, 'inventories', '313'],//38
-                    ['Advance Tax', 27, 2, 3, 4, 'advance-tax', '314'],//39
-                    ['VAT Current A/C', 27, 2, 3, 4, 'vat-current-account', '315'],//40
-                    ['cash and cash equivalent', 27, 2, 3, 4, null, '316'],//41
-                        ['Cash in hand', 41, 3, 3, 3, 'cash-in-hand', '316-1'],//42
-                        ['cash at bank', 41, 3, 3, 2, 'cash-at-bank', '316-2'],//43
+                ['Non Current Assets', null, 1, 3, 4, 'non-current-assets', '30000012'],//12
+                    ['Property Plant and Equipment', 12, 2, 3, 4, 'property-plant-and-equipment', '31001213'],//13
+                        ['Machinery & Equipment', 13, 3, 3, 4, null, '31001314'], //14
+                        ['Land & Land Decoration', 13, 3, 3, 4, null, '32001315'], //15
+                        ['Other Equipment', 13, 3, 3, 4, null, '33001316'], //16
+                        ['Office Equipment', 13, 3, 3, 4, null, '34001317'], //17
+                        ['Electric Equipment', 13, 3, 3, 4, null, '35001318'], //18
+                        ['Furniture & Fixtures', 13, 3, 3, 4, null, '36001319'], //19
+                        ['Computer System', 13, 3, 3, 4, null, '37001320'], //20
+                        ['Building (Shade & Decoration)', 13, 3, 3, 4, null, '38001321'], //21
+                        ['Spare Parts & Tools', 13, 3, 3, 4, null, '39001322'], //22
+                        ['Van & Cookeries', 13, 3, 3, 4, null, '310001323'], //23
+                        ['Office Decoration', 13, 3, 3, 4, null, '311001324'], //24
+                        ['Car & Vehicles', 13, 3, 3, 4, null, '312001325'], //25
+                    ['Preliminary and Pre-Operational Expenses', 12, 2, 3, 4, 'preliminary-and-pre-operational-expenses', '32001226'],//26
+                ['Current Assets', null, 1, 3, 4, 'current-assets', '30000027'],//27
+                    ['Advance, Deposits and Pre-payments', 27, 2, 3, 4, 'advance-deposits-and-pre-payments', '31002728'],//28
+                        ['Advance for Factory & Office Rent', 28, 3, 3, 4, null, '31002829'],//29
+                        ['Advance for Godown Rent', 28, 3, 3, 4, null, '32002830'], //30
+                        ['Advance for RM, PP & Ingredients', 28, 3, 3, 4, null, '33002831'], //31
+                        ['Advance for Others', 28, 3, 3, 4, null, '34002832'], //32
+                        ['Advance to Stuff', 28, 3, 3, 4, null, '35002833'], //33
+                        ['Advance for Various Project Works', 28, 3, 3, 4, null, '36002834'], //34
+                    ['Accounts Receivable and Other Receivables', 27, 2, 3, 4, 'accounts-receivable-and-other-receivable', '32002735'],//35
+                        ['Corporate', 35, 3, 3, 4, 'corporate', '31003536'],//36
+                        ['Retail', 35, 3, 3, 4, 'retail', '32003537'],//37
+                    ['Inventories', 27, 2, 3, 4, 'inventories', '33002738'],//38
+                    ['Advance Tax', 27, 2, 3, 4, 'advance-tax', '34002739'],//39
+                    ['VAT Current A/C', 27, 2, 3, 4, 'vat-current-account', '35002740'],//40
+                    ['cash and cash equivalent', 27, 2, 3, 4, null, '36002741'],//41
+                        ['Cash in hand', 41, 3, 3, 3, 'cash-in-hand', '31004142'],//42
+                        ['cash at bank', 41, 3, 3, 2, 'cash-at-bank', '32004143'],//43
 
 
                 //liabilities
-                ['Capital Account', null, 1, 4, 4, 'capital-account', '40'],//44
-                    ['Authorised Capital', 44, 2, 4, 4, 'authorised-capital', '401'],//45
-                ['Issued,  subscribed  and  paid - up', null, 1, 4, 4, 'issued-subscribed-and-paid-up', '41'],//46
-                    ['Share Premium', 46, 2, 4, 4, 'share-premium' , '410'], //47
-                    ['Share Money Deposits', 46, 2, 4, 4, 'share-money-deposits', '411'], //48
-                    ['Long Term Liabilities', 46, 2, 4, 4, 'long-term-liabilities', '412'], //49
-                    ['Short Term Loan', 46, 2, 4, 4, 'short-term-loan', '413'], //50
-                ['Accounts and other Trade Payable', null, 1, 4, 4, 'accounts-and-other-trade-payable', '42'],//51
-                    ['Trade Payable', 51, 2, 4, 4, 'trade-payable', '421'],//52
-                    ['Other Payable', 51, 2, 4, 4, 'other-payable', '422'],//53
-                ['Income Tax Payable/Provision', null, 1, 4, 4, 'income-tax-payable-provision', '43'],//54
-                    ['Tax Deduction at Source (TDS)', 54, 2, 4, 4, null, '431'], //55
-                ['Accumulated Depreciations', null, 1, 4, 4, 'accumulated-depreciations', '44'], //56
+                ['Capital Account', null, 1, 4, 4, 'capital-account', '40000044'],//44
+                    ['Authorised Capital', 44, 2, 4, 4, 'authorised-capital', '41004445'],//45
+                ['Issued,  subscribed  and  paid - up', null, 1, 4, 4, 'issued-subscribed-and-paid-up', '40000046'],//46
+                    ['Share Premium', 46, 2, 4, 4, 'share-premium' , '41004647'], //47
+                    ['Share Money Deposits', 46, 2, 4, 4, 'share-money-deposits', '42004648'], //48
+                    ['Long Term Liabilities', 46, 2, 4, 4, 'long-term-liabilities', '43004649'], //49
+                    ['Short Term Loan', 46, 2, 4, 4, 'short-term-loan', '44004650'], //50
+                ['Accounts and other Trade Payable', null, 1, 4, 4, 'accounts-and-other-trade-payable', '40000051'],//51
+                    ['Trade Payable', 51, 2, 4, 4, 'trade-payable', '41005152'],//52
+                    ['Other Payable', 51, 2, 4, 4, 'other-payable', '42005153'],//53
+                ['Income Tax Payable/Provision', null, 1, 4, 4, 'income-tax-payable-provision', '40000054'],//54
+                    ['Tax Deduction at Source (TDS)', 54, 2, 4, 4, null, '41005455'], //55
+                ['Accumulated Depreciations', null, 1, 4, 4, 'accumulated-depreciations', '40000056'], //56
                 // ['Current Liabilities', 43, 2, 4, 4, 'current-liabilities', '45'],//
 
                 
-                //sample data
-                ['Cash in Hand (Factory)', 42, 4, 3, 3, null, '316-3'],//57
-                ['AB Plastic Color', 52, 3, 4, 1, null, '421-1'],//58
-                ['Kazi Food Industries Limited', 36, 4, 3, 1, null, '312-3'],//59
+                        //sample data
+                        ['Cash in Hand (Factory)', 42, 4, 3, 3, null, '31004257'],//57
+                        ['AB Plastic Color', 52, 3, 4, 1, null, '41005257'],//58
+                        ['Kazi Food Industries Limited', 36, 4, 3, 1, null, '31003659'],//59
              
        ];
         

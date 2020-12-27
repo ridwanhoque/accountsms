@@ -181,10 +181,12 @@ class ChartOfAccountController extends Controller
         {
             $chart_of_account = ChartOfAccount::where('id', $request->parent_id);
             
+            // $parent_count = $chart_of_account->count() > 0 ? $chart_of_account->count()+1:1;
+
             $tire = $chart_of_account->count() > 0 ? $chart_of_account->first()->tire:0;
             $data['tire'] = $request->parent_id != '' ? ($tire + 1) : 1;
             $parent_id_db = $chart_of_account->count() >0 ? $chart_of_account->first()->id:'';
-            $chart_type_id = $chart_of_account->count() > 0 ? $chart_of_account->first()->chart_type_id:$requqest->chart_type_id;
+            $chart_type_id = $chart_of_account->count() > 0 ? $chart_of_account->first()->chart_type_id:$request->chart_type_id;
             $max_chart_id = ChartOfAccount::max('id')+1;
             $data['account_code'] = $chart_type_id.str_pad($parent_id_db, 4, 0, STR_PAD_LEFT).$max_chart_id;
             $data['chart_type_id'] = $chart_of_account->first()->chart_type_id ?? '';
