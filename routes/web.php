@@ -189,6 +189,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('trial_balance/{id}', 'Accounts\TrialBalanceController@details');
         //new
         Route::get('chart_balance/{id?}', 'Accounts\ChartBalanceReportController@index');
+        Route::get('chart_tree/{id?}', 'Accounts\ChartTreeController@index');
     });
 
 

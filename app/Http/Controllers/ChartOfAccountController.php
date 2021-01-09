@@ -6,6 +6,7 @@ use App\ChartOfAccount;
 use App\ChartType;
 use Illuminate\Http\Request;
 use App\OwnerType;
+use phpDocumentor\Reflection\Types\Null_;
 
 class ChartOfAccountController extends Controller
 {
@@ -176,24 +177,45 @@ class ChartOfAccountController extends Controller
         }
     }
 
+    // public function ajax_get_charts_bkp(Request $request){
+    //     if($request->ajax())
+    //     {
+    //         $chart_of_account = ChartOfAccount::where('id', $request->parent_id);
+            
+    //         // $parent_count = $chart_of_account->count() > 0 ? $chart_of_account->count()+1:1;
+
+    //         $tire = $chart_of_account->count() > 0 ? $chart_of_account->first()->tire:0;
+    //         $data['tire'] = $request->parent_id != '' ? ($tire + 1) : 1;
+    //         $parent_id_db = $chart_of_account->count() >0 ? $chart_of_account->first()->id:'';
+    //         $chart_type_id = $chart_of_account->count() > 0 ? $chart_of_account->first()->chart_type_id:$request->chart_type_id;
+    //         $max_chart_id = ChartOfAccount::max('id')+1;
+    //         $data['account_code'] = $chart_type_id.str_pad($parent_id_db, 4, 0, STR_PAD_LEFT).$max_chart_id;
+    //         $data['chart_type_id'] = $chart_of_account->first()->chart_type_id ?? '';
+
+    //         return $data;
+    //     }
+    // }
+
     public function ajax_get_charts(Request $request){
         if($request->ajax())
         {
             $chart_of_account = ChartOfAccount::where('id', $request->parent_id);
+            $self_charts = ChartOfAccount::where('parent_id', NULL);
             
-            // $parent_count = $chart_of_account->count() > 0 ? $chart_of_account->count()+1:1;
+            $parent_count = $chart_of_account->count() > 0 ? $chart_of_account->count()+1:$self_charts->count()+1;
 
             $tire = $chart_of_account->count() > 0 ? $chart_of_account->first()->tire:0;
             $data['tire'] = $request->parent_id != '' ? ($tire + 1) : 1;
             $parent_id_db = $chart_of_account->count() >0 ? $chart_of_account->first()->id:'';
             $chart_type_id = $chart_of_account->count() > 0 ? $chart_of_account->first()->chart_type_id:$request->chart_type_id;
             $max_chart_id = ChartOfAccount::max('id')+1;
-            $data['account_code'] = $chart_type_id.str_pad($parent_id_db, 4, 0, STR_PAD_LEFT).$max_chart_id;
+            $data['account_code'] = $chart_type_id.str_pad($parent_id_db, 4, 0, STR_PAD_LEFT).$parent_count.$max_chart_id;
             $data['chart_type_id'] = $chart_of_account->first()->chart_type_id ?? '';
 
             return $data;
         }
     }
+
 
     
     public function ajax_get_chart_of_account_balance(Request $request){

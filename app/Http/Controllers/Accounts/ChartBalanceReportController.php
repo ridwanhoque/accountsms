@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Accounts;
 use App\ChartOfAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Traits\DropdownTrait;
 
 class ChartBalanceReportController extends Controller
 {
-    use DropdownTrait;
     /**
      * Handle the incoming request.
      *
@@ -18,8 +16,6 @@ class ChartBalanceReportController extends Controller
      */
     public function index($id = null)
     {
-
-        // dump(strip_tags($this->chartOfAccountCombo()));
 
         $chart_of_accounts = ChartOfAccount::orderByDesc('balance')
                                 ->when($id == null, function($query){
