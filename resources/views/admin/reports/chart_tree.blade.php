@@ -1,16 +1,17 @@
 @extends('admin.master')
+@section('page_title', 'Chart of Account Tree') 
 @section('content')
 
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i> Product Stock Transfer Information</h1>
-      <p>Product Stock Transfer information </p>
+      <h1><i class="fa fa-th-list"></i> @yield('page_title')</h1>
+      <p>@yield('page_title') </p>
     </div>
     <ul class="app-breadcrumb breadcrumb side">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Product Stock Transfer Information</li>
-      <li class="breadcrumb-item active"><a href="#">Product Stock Transfer Information Table</a></li>
+      <li class="breadcrumb-item">@yield('page_title')</li>
+      <li class="breadcrumb-item active"><a href="#">@yield('page_title') Table</a></li>
     </ul>
   </div>
   <div class="row">
@@ -22,8 +23,7 @@
       @endif
 
       <div class="tile">
-        <a href="{{ route('product_stock_transfers.create') }}" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i>Add Product Stock Transfer</a>
-        <h3 class="tile-title">Product Stock Transfer List </h3>
+        <h3 class="tile-title">@yield('page_title')  </h3>
         <div class="tile-body">
           <table class="table table-hover table-bordered" id="">
             <thead>
