@@ -103,7 +103,7 @@ class ChartOfAccountTableSeeder extends Seeder
                     
                 //expense
                 ['Purchase', null, 1, 2, 4, 'purchase', '2000004'],//4
-                ['Saes Return', null, 1, 2, 4, 'sales-return', '2000005'],//5
+                ['Sales Return', null, 1, 2, 4, 'sales-return', '2000005'],//5
                 ['Direct Expenses', null, 1, 2, 4, 'direct-expenses', '2000006'],//6
                 ['Factory Overhead', null, 1, 2, 4, 'factory-overhead', '2000007'],//7
                 ['Depreciation', null, 1, 2, 4, 'depreciation', '2000008'],//8
