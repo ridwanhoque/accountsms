@@ -54,7 +54,9 @@
                   @endphp
                   
                   <div class="form-group float-left">
-                    <label class="control-label"><strong>{{ $chart_of_account->head_name }}</strong></label>
+                    <label class="control-label mr-4">
+                      <strong>{{ $chart_of_account->head_name }}</strong>
+                    </label>
                     <div style="padding-right: 50px;">
                       <input type="hidden" name="chart_of_account_ids[]" value="{{ $chart_of_account->id }}">
                       Amount :

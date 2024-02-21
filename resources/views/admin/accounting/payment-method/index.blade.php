@@ -201,7 +201,7 @@
                                                             <select name="account_information_id" id="account_information_id" class="form-control @error('account_information_id') is-invalid @enderror ">
                                                                 <option value="">- Select Account -</option>
                                                                 @foreach($accountInfos as $accountInfo)
-                                                                    <option value="{{ $accountInfo->id }}" {{ $accountInfo->id == $paymentMethods->account_information_id ? 'selected' : old('account_information_id') == $accountInfo->id ? 'selected' : '' }}>{{ $accountInfo->account_name }}</option>
+                                                                    <option value="{{ $accountInfo->id }}" {{ $accountInfo->id == $paymentMethods->account_information_id || old('account_information_id') == $accountInfo->id ? 'selected' : '' }}>{{ $accountInfo->account_name }}</option>
                                                                 @endforeach
 
                                                             </select>

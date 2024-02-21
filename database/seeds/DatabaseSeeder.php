@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
         //accounts seeder
         $this->call(OwnerTypesTableSeeder::class);
         $this->call(ChartTypesTableSeeder::class);
-        $this->call(ChartOfAccountTableSeeder::class);
+        // $this->call(ChartOfAccountTableSeeder::class);
         // $this->call(DummyChartOfAccountsTableSeeder::class);
-        $this->call(DummyPartiesTableSeeder::class);
+        // $this->call(DummyPartiesTableSeeder::class);
     }
 }

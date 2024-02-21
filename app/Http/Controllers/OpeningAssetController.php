@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\OpeningAsset;
 use App\ChartOfAccount;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Message;
 
 class OpeningAssetController extends Controller
@@ -13,7 +13,7 @@ class OpeningAssetController extends Controller
 
     public function index(){
         $currentUser = Auth::user();
-        $chart_of_accounts = ChartOfAccount::where('type', 'asset')->charts();
+        $chart_of_accounts = ChartOfAccount::where('chart_type_id', ChartOfAccount::CHART_ASSET)->charts();
         return view('admin.accounting.opening_assets.opening_assets', compact('chart_of_accounts'));
     }
 

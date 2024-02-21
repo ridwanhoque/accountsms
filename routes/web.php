@@ -11,9 +11,10 @@
 |
  */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'LoginController@showLoginForm');
 
 Auth::routes();
 

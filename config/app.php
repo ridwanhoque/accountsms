@@ -123,7 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'project_title' => 'POS',
+    'project_title' => 'Accounts MS',
 
     'wastage_types' => [
         'sheet_wastage', 'forming_wastage'
